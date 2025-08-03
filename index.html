@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Savekee Login</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase SDK -->
+  <!-- Firebase SDK (UMD version for browsers) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBiPCH-j_IuUSzvziaZwQI5XjsqGb15wuM",
+      authDomain: "password-manager-22006.firebaseapp.com",
+      projectId: "password-manager-22006",
+      storageBucket: "password-manager-22006.firebasestorage.app",
+      messagingSenderId: "447001844089",
+      appId: "1:447001844089:web:efe9df06b09f511a6a37a8",
+      measurementId: "G-X8LC59PD2H"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #f1f1f1;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container h1 {
+  margin-bottom: 20px;
+  color: #19698f;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.btn-group button {
+  width: 48%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: #19698f;
+  cursor: pointer;
+}
+
+.btn-group button:hover {
+  background-color: #155a73;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>🔐 Savekee Login</h1>
+
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+
+    <div class="btn-group">
+      <button onclick="login()">Login</button>
+      <button onclick="signup()">Sign Up</button>
+    </div>
+
+    <p id="error" class="error"></p>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

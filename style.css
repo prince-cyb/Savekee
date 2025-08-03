@@ -10,6 +10,8 @@ body {
     color: #333;
 }
 
+
+
 .nav{
     background-color: #19698f;
     color: white;
@@ -52,8 +54,8 @@ body {
 
 .main{
     width: 100%;
-    height: auto;
-    margin-top: 50px;
+    min-height: 100vh;
+    margin-top: 60px;
 }
 
 .heading{
@@ -69,6 +71,7 @@ body {
 
 .container .box {
     height: 350px;
+    width: 45%;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -124,11 +127,17 @@ body {
     justify-content: space-around;
 }
 .data-display .data-box {
-    width: 400px;
+    width: 70%;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: 900;
 }
 
 .data-display table {
@@ -161,8 +170,35 @@ body {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
     width: 100%;
     bottom: 0;
 }
 
+
+.entry {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  font-family: monospace;
+}
+.entry span {
+  cursor: pointer;
+}
+.entry span:hover {
+  text-decoration: underline;
+  color: #19698f;
+}
+
+.toast{
+    position: fixed;
+    top: 50px;
+    right: 50%;
+    background-color: #00ccff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: opacity 0.8s ease-in-out;
+}

@@ -1,3 +1,4 @@
+<!-- home.html (clean and fixed) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,25 @@
     <title>Savekee</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Firebase SDKs (compat version for browser use) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBiPCH-j_IuUSzvziaZwQI5XjsqGb15wuM",
+        authDomain: "password-manager-22006.firebaseapp.com",
+        projectId: "password-manager-22006",
+        storageBucket: "password-manager-22006.firebasestorage.app",
+        messagingSenderId: "447001844089",
+        appId: "1:447001844089:web:efe9df06b09f511a6a37a8",
+        measurementId: "G-X8LC59PD2H"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
     <div class="nav">
@@ -15,13 +35,9 @@
         <ul class="nav-links">
             <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <!-- <li><a href="contact.html">Contact</a></li> -->
         </ul>
-
         <div class="auth-buttons">
-            <button><i class="fa-solid fa-sun"></i></button>
-            <button class="login-btn btn">Login</button>
-            <button class="signup-btn btn">Sign Up</button>
+            <button onclick="logout()" class="btn">Logout</button>
         </div>
     </div>
     <div class="main">
@@ -42,7 +58,8 @@
                         <label for="cvv">CVV</label>
                         <input type="text" id="cvv" name="cvv" required>
                     </div>
-                    <button type="submit" class="submit-btn">Save Card</button>
+                    <button type="submit" class="submit-btn" id="submit-btn">Save Card</button>
+                </form>
             </div>
             <div class="userInput box">
                 <h1>Enter Password Details</h1>
@@ -60,40 +77,22 @@
                         <input type="password" id="password" name="password" required>
                     </div>
                     <button type="submit" class="submit-btn">Save Password</button>
+                </form>
             </div>
         </div>
         <div class="showData">
             <h1 class="heading">Saved Data</h1>
             <div class="data-display">
-                <div class="card-data data-box">
-                    <h2>Card Details</h2>
-                    <table>
-                        <tr>
-                            <th>Website</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                        </tr>
-                        <tr>
-                            <td>facebook.com</td>
-                            <td>john@fb.com</td>
-                            <td>••••••••</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="password-data data-box">
-                    <h2>Password Details</h2>
-                    <p id="passwordInfo">
-                        <strong>Website:</strong> example.com<br>
-                        <strong>Username:</strong> johndoe@example.com<br>
-                        <strong>Password:</strong> •••••••• <button onclick="alert('Password copied!')">Copy</button>
-                    </p>
+                <div class="card-data password-data data-box">
+                    <div id="cardInfo">Loading...</div>
+                    <div id="passwordInfo">Loading...</div>
                 </div>
             </div>
         </div>
-        <div class="footer">
-            <p>&copy; 2025 Savekee. All rights reserved.</p>
     </div>
-
+    <div class="footer">
+        <p>&copy; 2025 Savekee. All rights reserved.</p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
