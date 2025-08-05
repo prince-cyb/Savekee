@@ -23,6 +23,7 @@ body {
     text-align: center;
     position: fixed;
     width: 100%;
+    hight:60px;
     top: 0;
     z-index: 1000;
     display: flex;
@@ -221,6 +222,7 @@ body {
     }
     .nav {
         flex-direction: column;
+        hight:100px;
     }
     .nav .nav-links {
         margin-top: 10px;
