@@ -1,4 +1,3 @@
-<!-- home.html (clean and fixed) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,14 +29,15 @@
 <body>
     <div class="nav">
         <div class="logo">
-            <img src="logo.png" alt="Savekee Logo">
+            <img src="logo.png" style="border-radius: 50%; width: 30px;" alt="Savekee Logo">
+            <span class="logo-text">Savekee</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
         <div class="auth-buttons">
-            <button onclick="logout()" class="btn">Logout</button>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <button onclick="logout()" class="btn">Logout</button>
+            </ul>
         </div>
     </div>
     <div class="main">
@@ -84,8 +84,8 @@
             <h1 class="heading">Saved Data</h1>
             <div class="data-display">
                 <div class="card-data password-data data-box">
-                    <div id="cardInfo">Loading...</div>
-                    <div id="passwordInfo">Loading...</div>
+                    <div class="info" id="cardInfo">Loading...</div>
+                    <div class="info" id="passwordInfo">Loading...</div>
                 </div>
             </div>
         </div>
