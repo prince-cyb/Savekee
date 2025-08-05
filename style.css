@@ -10,7 +10,11 @@ body {
     color: #333;
 }
 
-
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 .nav{
     background-color: #19698f;
@@ -28,6 +32,8 @@ body {
 
 .nav .nav-links {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
     list-style-type: none;
 }
@@ -76,7 +82,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 400px;
+    /* width: 400px; */
     text-align: center;
 }
 
@@ -127,7 +133,7 @@ body {
     justify-content: space-around;
 }
 .data-display .data-box {
-    width: 70%;
+    width: 90%;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -138,32 +144,10 @@ body {
     justify-content: center;
     font-size: xx-large;
     font-weight: 900;
+    /* color: #19698f; */
+    text-align: center;
+    margin-bottom: 20px;
 }
-
-.data-display table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-display table, .data-display th, .data-display td {
-    border: 1px solid #ddd;
-}
-
-.data-display th, .data-display td {
-    padding: 8px;
-    text-align: left;
-}
-
-.data-display th {
-    background-color: #f2f2f2;
-}
-.data-display tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-.data-display tr:hover {
-    background-color: #f1f1f1;
-}
-
 
 .footer {
     background-color: #333;
@@ -176,13 +160,32 @@ body {
 
 
 .entry {
+    width: 100%;
   display: flex;
   gap: 12px;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
   flex-wrap: wrap;
+  flex-direction: column;
   font-family: monospace;
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
 }
+
+.info{
+    width: 100%;
+    text-align: center;
+}
+
+.website-name{
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+
 .entry span {
   cursor: pointer;
 }
@@ -201,4 +204,31 @@ body {
     border-radius: 5px;
     z-index: 1000;
     transition: opacity 0.8s ease-in-out;
+}
+
+
+@media (max-width: 768px) {
+    .main{
+        margin-top: 110px;
+    }
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container .box {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    .nav {
+        flex-direction: column;
+    }
+    .nav .nav-links {
+        margin-top: 10px;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .info{
+        font-size: 18px;
+    }
+    
 }
