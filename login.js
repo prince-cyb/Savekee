@@ -1,4 +1,3 @@
-// login.js
 const auth = firebase.auth();
 
 const errorBox = document.getElementById("error");
