@@ -1,4 +1,3 @@
-// script.js with final fixes: CVV + card visibility, full password info
 const auth = firebase.auth();
 const db = firebase.firestore();
 const masterKey = "SavekeeMasterKey";
@@ -106,41 +105,43 @@ function listenToUserData(uid) {
 
 function renderCard(id, data) {
   const div = document.createElement("div");
-  div.className = "entry";
-  div.innerHTML = `💳 
+  div.className = "entry card";
+  div.innerHTML = `
+  💳 
     <span class="copyable" data-value="${data.number}" data-actual="${data.number}">${data.number}</span>
-    <span class="copyable" data-value="${data.expiry}">${data.expiry}</span>
-    <span class="secret" data-actual="${data.cvv}">***</span>
+    <span class="copyable" data-value="${data.expiry}">Expiry Date-${data.expiry}</span>
+    <span class="secret" data-actual="${data.cvv}">CVV-***</span>
     <i class="fas fa-eye" onclick="toggleSecret(this)"></i>
-    <i class="fas fa-pen" onclick='inlineEditCard("${id}", this)'></i>
     <i class="fas fa-trash" onclick="deleteEntry('cards', '${id}')"></i>`;
-  div.querySelectorAll(".copyable").forEach(span => {
-    span.addEventListener("click", () => copyToClipboard(span.dataset.value));
-  });
-  cardInfo.appendChild(div);
-}
-
+    div.querySelectorAll(".copyable").forEach(span => {
+      span.addEventListener("click", () => copyToClipboard(span.dataset.value));
+    });
+    cardInfo.appendChild(div);
+  }
+  // <i class="fas fa-pen" onclick='inlineEditCard("${id}", this)'></i>
+  
 function renderPassword(id, data) {
   const div = document.createElement("div");
   div.className = "entry";
-  div.innerHTML = `🌐 
-    <span class="copyable" data-value="${data.website}">${data.website}</span>
+  div.innerHTML = `
+  <div class="website-name" data-value="${data.website}">🌐${data.website}</div> 
     <span class="copyable" data-value="${data.username}">${data.username}</span>
-    <span class="secret" data-actual="${data.password}">••••••••</span>
+    <span class="secret" data-actual="${data.password}">PAssword-••••••••</span>
     <i class="fas fa-eye" onclick="toggleSecret(this)"></i>
-    <i class="fas fa-pen" onclick='inlineEditPassword("${id}", this)'></i>
-    <i class="fas fa-trash" onclick="deleteEntry('passwords', '${id}')"></i>`;
-  div.querySelectorAll(".copyable").forEach(span => {
-    span.addEventListener("click", () => copyToClipboard(span.dataset.value));
-  });
-  passwordInfo.appendChild(div);
-}
-
+    <i class="fas fa-trash" onclick="deleteEntry('passwords', '${id}')"></i>
+    `;
+    div.querySelectorAll(".copyable").forEach(span => {
+      span.addEventListener("click", () => copyToClipboard(span.dataset.value));
+    });
+    passwordInfo.appendChild(div);
+  }
+  // <i class="fas fa-pen" onclick='inlineEditPassword("${id}", this)'></i>
+  
 function toggleSecret(icon) {
   const span = icon.previousElementSibling;
   const actual = span.dataset.actual;
   const isMasked = span.textContent.includes("•") || span.textContent.includes("*");
-  span.textContent = isMasked ? actual : "••••••••";
+  span.textContent = isMasked ? actual : "***";
 }
 
 async function deleteEntry(collection, id) {
